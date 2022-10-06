@@ -1,5 +1,5 @@
-import practiceClassKEY as p
-import csv
+##import practiceClassKEY as p
+#import csv
 
 
 shows = {
@@ -35,7 +35,8 @@ play class that has id 9587
 NOTE: Do not hard code the values to create the instance but use
 keys and values from the dictionary '''
 
-
+value = shows['play3']['id']
+print(value)
 
 '''using the bookings.csv file process only those 
 reservations for the same play (9587). Create an 
@@ -46,11 +47,25 @@ error message as shown in output.JPG'''
 
 
 #open the csv file in read mode
+import csv
 
+infile = open('bookings.csv','r')
 
 #create a csv object from the file object from the step above
 
 
+csvfile = csv.reader(infile,delimiter=',')
+next(csvfile)
+
 
 # use a for loop to iterate through each record in the bookings file
 
+total_seats = 0
+for record in csvfile: 
+    if record[0] == value:
+        total_seats = shows['play3']['capacity']
+    elif int(record[2]) > total_seats:
+       
+        print('error')
+        
+        
